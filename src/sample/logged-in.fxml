@@ -26,29 +26,29 @@
                   <TableColumn fx:id="roomclm" prefWidth="97.0" text="Room No" />
                </columns>
             </TableView>
-            <Button fx:id="selectbtn" layoutX="21.0" layoutY="413.0" mnemonicParsing="false" onAction="#selectbtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Select" textFill="#296dda" underline="true">
+            <Button fx:id="selectbtn" layoutX="237.0" layoutY="390.0" mnemonicParsing="false" onAction="#selectbtnclicked" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Select" textFill="#296dda" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <TextField fx:id="bookidfld" layoutX="320.0" layoutY="414.0" prefHeight="25.0" prefWidth="125.0" />
-            <Label layoutX="252.0" layoutY="417.0" text="BookID">
+            <TextField fx:id="bookidfld" layoutX="243.0" layoutY="426.0" prefHeight="25.0" prefWidth="125.0" />
+            <Label layoutX="176.0" layoutY="428.0" text="BookID">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="5.0" layoutY="459.0" mnemonicParsing="false" onAction="#buybtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Borrow" textFill="#296dda" underline="true">
+            <Button layoutX="58.0" layoutY="479.0" mnemonicParsing="false" onAction="#borrowbtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Borrow" textFill="#296dda" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buybtn" layoutX="132.0" layoutY="459.0" mnemonicParsing="false" onAction="#buybtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Buy" textFill="#296dda" underline="true">
+            <Button fx:id="buybtn" layoutX="360.0" layoutY="492.0" mnemonicParsing="false" onAction="#buybtnclicked1" prefHeight="27.0" prefWidth="106.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Buy" textFill="#296dda" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <TextField fx:id="buyquantity" layoutX="350.0" layoutY="447.0" prefHeight="25.0" prefWidth="125.0" />
-            <Label layoutX="256.0" layoutY="452.0" text="BuyQuantity">
+            <TextField fx:id="buyquantity" layoutX="425.0" layoutY="458.0" prefHeight="25.0" prefWidth="125.0" text="1" />
+            <Label layoutX="336.0" layoutY="461.0" text="BuyQuantity">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

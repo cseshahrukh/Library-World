@@ -162,7 +162,6 @@ public class Main extends Application {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("UserName Already in Database");
                 alert.show();
-                System.out.println("Product with this Id already exisits");
             } else {
                 System.out.println("insdie else of addUser");
                 String insertQuery = String.format(
@@ -172,8 +171,8 @@ public class Main extends Application {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("UserName added");
                 alert.show();
-                System.out.println("Product with this Id already exisits");
             }
+            System.out.println("Product with this Id already exisits");
         } catch (Exception e) {
             System.out.println("Exception in addProduct: " + e);
         } finally {
