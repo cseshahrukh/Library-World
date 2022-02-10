@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoggedInController">
+   <children>
+      <AnchorPane prefHeight="533.0" prefWidth="573.0" style="-fx-background-color: #AAAAAA;">
+         <children>
+            <TableView fx:id="bookstbl" layoutX="-1.0" prefHeight="390.0" prefWidth="573.0">
+               <columns>
+                  <TableColumn fx:id="bookidclm" prefWidth="88.0" text="BookID" />
+                  <TableColumn fx:id="booknameclm" prefWidth="87.0" text="Book Name" />
+                  <TableColumn fx:id="writer1clm" prefWidth="72.0" text="Writer1" />
+                  <TableColumn fx:id="writer2clm" prefWidth="83.0" text="Writer2" />
+                  <TableColumn fx:id="writer3clm" prefWidth="57.0" text="Writer3" />
+                  <TableColumn fx:id="shelfclm" prefWidth="87.0" text="ShelfNo" />
+                  <TableColumn fx:id="roomclm" prefWidth="97.0" text="Room No" />
+               </columns>
+            </TableView>
+            <Button fx:id="selectbtn" layoutX="21.0" layoutY="413.0" mnemonicParsing="false" onAction="#selectbtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Select" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="bookidfld" layoutX="320.0" layoutY="414.0" prefHeight="25.0" prefWidth="125.0" />
+            <Label layoutX="252.0" layoutY="417.0" text="BookID">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="5.0" layoutY="459.0" mnemonicParsing="false" onAction="#buybtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Borrow" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buybtn" layoutX="132.0" layoutY="459.0" mnemonicParsing="false" onAction="#buybtnclicked" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Buy" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="buyquantity" layoutX="350.0" layoutY="447.0" prefHeight="25.0" prefWidth="125.0" />
+            <Label layoutX="256.0" layoutY="452.0" text="BuyQuantity">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="530.0" prefWidth="202.0" style="-fx-background-color: #000000;">
+         <children>
+            <Button layoutX="46.0" layoutY="392.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="48.0" prefWidth="98.0" style="-fx-background-color: #81d8d0;" text="Log Out" textFill="#403838">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Button>
+            <TextField fx:id="writer" layoutX="4.0" layoutY="14.0" prefHeight="31.0" prefWidth="180.0" promptText="Name of the Writer">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="154.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../sample/search-black-icon-vector-16838106.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="bookName" layoutX="5.0" layoutY="57.0" prefHeight="25.0" prefWidth="180.0" promptText="Name of the Book">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="154.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../sample/search-black-icon-vector-16838106.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="category" layoutX="4.0" layoutY="98.0" prefHeight="25.0" prefWidth="180.0" promptText="Category">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="154.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../sample/search-black-icon-vector-16838106.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="searchbtn" layoutX="43.0" layoutY="160.0" mnemonicParsing="false" onAction="#search" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #456547;" text="Search" textFill="#f8f3e8">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
