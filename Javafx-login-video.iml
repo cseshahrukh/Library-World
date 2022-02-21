@@ -11,5 +11,6 @@
     <orderEntry type="library" name="ojdbc8-12.2.0.1" level="project" />
     <orderEntry type="library" name="ojdbc10" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
   </component>
 </module>

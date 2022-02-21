@@ -73,6 +73,16 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
+            <Button fx:id="button_sign_up1" layoutX="250.0" layoutY="14.0" mnemonicParsing="false" onAction="#admin" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Click Here!" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="175.0" layoutY="19.0" text="Admin?">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="19.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

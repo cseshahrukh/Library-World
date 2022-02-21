@@ -27,6 +27,7 @@ public class Main extends Application {
     public Stage stage;
 
 
+
     public Stage getStage() {
         return stage;
     }
@@ -249,7 +250,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Login");
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root, 800, 650));
         stage.show();
 
 

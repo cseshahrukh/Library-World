@@ -3,10 +3,14 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
 import java.awt.*;
@@ -58,6 +62,18 @@ public class Controller  {
 
         main.signUpHome();
         //main.changeScene("sign-up.sample.fxml", "Sign Up!", null);
+    }
+
+    public void admin(ActionEvent event) throws IOException
+    {
+        Stage stage=(Stage)button_login.getScene().getWindow();
+        //main.stage=primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+        stage.setTitle("Library Management System");
+        stage.setScene(new Scene(root, 600,400));
+        //stage.setScene(new Scene(root, 900,700));
+        stage.setResizable(false);
+        stage.show();
     }
 
 
