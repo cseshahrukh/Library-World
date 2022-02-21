@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnbookController">
+    <children>
+        <Label layoutX="318.0" layoutY="14.0" text="Book Return ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="152.0" layoutY="58.0" prefHeight="20.0" prefWidth="57.0" text="User ID">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="userid1fld" layoutX="209.0" layoutY="55.0" prefHeight="25.0" prefWidth="162.0" promptText="Enter the user id" />
+        <Button layoutX="408.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchbtnclicked" prefHeight="25.0" prefWidth="57.0" text="search" />
+        <TableView fx:id="borrowedbookstbl" layoutY="130.0" prefHeight="120.0" prefWidth="762.0">
+            <columns>
+                <TableColumn fx:id="bookidclm" prefWidth="99.0" text="BookID" />
+                <TableColumn fx:id="booknameclm" prefWidth="116.0" text="Book Name" />
+                <TableColumn fx:id="writer1clm" prefWidth="110.0" text="Writer1" />
+                <TableColumn fx:id="writer2clm" prefWidth="97.0" text="Writer2" />
+                <TableColumn fx:id="writer3clm" prefWidth="102.0" text="Writer3" />
+                <TableColumn fx:id="publisherclm" prefWidth="77.0" text="Publisher" />
+                <TableColumn fx:id="shelfclm" minWidth="0.0" prefWidth="84.0" text="Shelf No" />
+                <TableColumn fx:id="roomclm" prefWidth="73.0" text="Room No" />
+            </columns>
+        </TableView>
+        <Button layoutX="365.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectbtnclicked" text="Select" />
+        <Label layoutX="169.0" layoutY="384.0" text="Date of Borrow">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="169.0" layoutY="341.0" text="UserID">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="169.0" layoutY="300.0" text="BookID">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="169.0" layoutY="434.0" text="Date of Return">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Button layoutX="352.0" layoutY="487.0" mnemonicParsing="false" onAction="#confirmbtnclicked" text="Confirm return" />
+        <TextField fx:id="dateborrowfld" layoutX="295.0" layoutY="382.0" prefHeight="25.0" prefWidth="141.0" />
+        <TextField fx:id="bookidfld" layoutX="295.0" layoutY="298.0" prefHeight="25.0" prefWidth="141.0" />
+        <TextField fx:id="userid2fld" layoutX="295.0" layoutY="339.0" prefHeight="25.0" prefWidth="141.0" />
+        <TextField fx:id="datereturnfld" layoutX="295.0" layoutY="432.0" prefHeight="25.0" prefWidth="141.0" />
+      <Label layoutX="312.0" layoutY="98.0" text="Borrowed Book Info">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="623.0" layoutY="506.0" mnemonicParsing="false" onAction="#homebtnclicked" text="Home" />
+    </children>
+</AnchorPane>

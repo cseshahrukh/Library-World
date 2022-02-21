@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="581.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddbookController">
+   <children>
+      <Label layoutX="325.0" layoutY="14.0" prefHeight="27.0" prefWidth="103.0" text="Add Books">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="62.0" text="Search Book">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchbookfld" layoutX="202.0" layoutY="60.0" prefHeight="25.0" prefWidth="197.0" promptText="Enter the book name" />
+      <Button fx:id="searchbtn" layoutX="444.0" layoutY="60.0" mnemonicParsing="false" onAction="#searchbtnclicked" prefHeight="25.0" prefWidth="103.0" text="Click to search" />
+      <TableView fx:id="bookstbl" layoutX="2.0" layoutY="118.0" prefHeight="164.0" prefWidth="760.0">
+        <columns>
+          <TableColumn fx:id="bookidclm" prefWidth="117.0" text="BookID" />
+          <TableColumn fx:id="booknameclm" prefWidth="117.0" text="Book Name" />
+            <TableColumn fx:id="writer1clm" prefWidth="98.0" text="Writer1" />
+            <TableColumn fx:id="writer2clm" prefWidth="156.0" text="Writer2" />
+            <TableColumn fx:id="writer3clm" prefWidth="109.0" text="Writer3" />
+            <TableColumn fx:id="shelfclm" prefWidth="85.0" text="ShelfNo" />
+            <TableColumn fx:id="roomclm" prefWidth="77.0" text="Room No" />
+        </columns>
+      </TableView>
+      <Button fx:id="selectbtn" layoutX="325.0" layoutY="310.0" mnemonicParsing="false" onAction="#selectbtnclicked" prefHeight="25.0" prefWidth="67.0" text="Select" />
+      <Label layoutX="93.0" layoutY="397.0" text="BookID">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="348.0" layoutY="393.0" prefHeight="27.0" prefWidth="103.0" text="Book Quantity">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="bookidfld" layoutX="150.0" layoutY="395.0" prefHeight="25.0" prefWidth="125.0" />
+      <TextField fx:id="qunatityfld" layoutX="449.0" layoutY="394.0" prefHeight="25.0" prefWidth="118.0" promptText="Enter book quantity" />
+      <RadioButton fx:id="selltyperdobtn" layoutX="301.0" layoutY="457.0" mnemonicParsing="false" text="Sell Type">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="borrowtyperdobtn" layoutX="409.0" layoutY="457.0" mnemonicParsing="false" selected="true" text="BorrowType">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="confirmbtn" layoutX="343.0" layoutY="514.0" mnemonicParsing="false" onAction="#confirmbtnclicked" prefHeight="25.0" prefWidth="67.0" text="Confirm" />
+      <Label layoutX="175.0" layoutY="457.0" text="Select book type">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="656.0" layoutY="514.0" mnemonicParsing="false" onAction="#homebtnclicked" style="-fx-background-color: FF3333;" text="Home" textFill="#fcf6f6" />
+   </children>
+</AnchorPane>

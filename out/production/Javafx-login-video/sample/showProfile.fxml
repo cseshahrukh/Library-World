@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ShowProfileController">
+   <children>
+      <Button layoutX="33.0" layoutY="515.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Back" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="namefld" editable="false" layoutX="178.0" layoutY="45.0" prefHeight="25.0" prefWidth="493.0" />
+      <Label layoutX="59.0" layoutY="47.0" text="Name">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="79.0" text="username">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="130.0" text="PeopleID">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="168.0" text="Email">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="211.0" text="Adress">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="251.0" text="Phone">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="297.0" text="Date of Birth">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="335.0" text="ActiveStatus">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="379.0" text="BorrowStatus">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernamefld" editable="false" layoutX="178.0" layoutY="87.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="dobfld" editable="false" layoutX="178.0" layoutY="294.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="phonefld" layoutX="178.0" layoutY="249.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="addressfld" layoutX="178.0" layoutY="209.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="emailfld" layoutX="178.0" layoutY="165.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="peopleidfld" editable="false" layoutX="178.0" layoutY="127.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="activefld" editable="false" layoutX="178.0" layoutY="332.0" prefHeight="25.0" prefWidth="493.0" />
+      <TextField fx:id="borrowfld" editable="false" layoutX="178.0" layoutY="376.0" prefHeight="25.0" prefWidth="493.0" />
+      <Label layoutX="54.0" layoutY="425.0" text="Fine">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="findfld" editable="false" layoutX="178.0" layoutY="412.0" prefHeight="25.0" prefWidth="493.0" />
+      <Label layoutX="54.0" layoutY="455.0" text="Expire Date">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="expiredatefld" editable="false" layoutX="178.0" layoutY="453.0" prefHeight="25.0" prefWidth="493.0" />
+      <Button layoutX="266.0" layoutY="515.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Update" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="471.0" layoutY="515.0" mnemonicParsing="false" onAction="#history" style="-fx-background-color: #000000; -fx-cursor: hand;" text="See History" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="686.0" layoutY="515.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Log Out" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
