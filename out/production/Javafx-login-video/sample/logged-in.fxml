@@ -24,8 +24,9 @@
                   <TableColumn fx:id="writer1clm" prefWidth="72.0" text="Writer1" />
                   <TableColumn fx:id="writer2clm" prefWidth="83.0" text="Writer2" />
                   <TableColumn fx:id="writer3clm" prefWidth="57.0" text="Writer3" />
-                  <TableColumn fx:id="shelfclm" prefWidth="87.0" text="ShelfNo" />
-                  <TableColumn fx:id="roomclm" prefWidth="97.0" text="Room No" />
+                  <TableColumn fx:id="shelfclm" prefWidth="54.0" text="ShelfNo" />
+                  <TableColumn fx:id="roomclm" prefWidth="66.0" text="Room No" />
+                  <TableColumn fx:id="priceclm" prefWidth="65.0" text="price" />
                </columns>
                <effect>
                   <DropShadow />

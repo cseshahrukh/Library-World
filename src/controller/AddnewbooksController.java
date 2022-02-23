@@ -8,11 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.util.*;
 import java.sql.*;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import startup.*;
@@ -37,6 +35,11 @@ public class AddnewbooksController {
     public TextField qunatityfld;
     public Button confirmbtn;
     public ToggleGroup tg;
+    public CheckBox childrenchkbox;
+    public CheckBox comicschkbox;
+    public CheckBox detectivechkbox;
+    public CheckBox academicchkbox;
+    public CheckBox adventurechkbox;
     private String bookid, bookname, writer1,writer2,writer3,publisher,shelf,room;
     private int pages,price,quantity;
 
@@ -58,8 +61,24 @@ public class AddnewbooksController {
         borrowtyperdobtn.setToggleGroup(tg);
 
     }
-    private void takeinputs()
+    private boolean takeinputs()
     {
+        if(booknamefld.getText().equals("") || publisherfld.getText().equals("") || shelffld.getText().equals("") || roomfld.getText().equals("") || pagesfld.getText().equals("") || pricefld.getText().equals("") || qunatityfld.getText().equals(""))
+        {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Please fill up all the fields");
+            a.showAndWait();
+            return false;
+        }
+
+        if(writer1fld.getText().equals("") && writer2fld.getText().equals("") && writer3fld.getText().equals(""))
+        {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Please fill up all the fields");
+            a.showAndWait();
+            return false;
+        }
+
         bookname=booknamefld.getText().trim();
         writer1=writer1fld.getText().trim();
         writer2=writer2fld.getText().trim();
@@ -70,6 +89,7 @@ public class AddnewbooksController {
         pages = Integer.parseInt(pagesfld.getText().trim());
         price = Integer.parseInt(pricefld.getText().trim());
         quantity=Integer.parseInt(qunatityfld.getText().trim());
+        return true;
 
     }
 
@@ -102,7 +122,9 @@ public class AddnewbooksController {
     }*/
 
     public void confirmbtnclicked(ActionEvent actionEvent) {
-        takeinputs();
+        boolean v=takeinputs();
+        if(v==false)
+            return;
         DbConn oc;
         String catname;
         int count1=0;
@@ -121,7 +143,7 @@ public class AddnewbooksController {
             count1++;
             bookid=String.valueOf(count1);
 
-            String query1=String.format("INSERT INTO BOOKS VALUES ('%s','%s','%s',%d,%d,'bangla','%s','%s')",bookid,bookname,publisher,price,pages,shelf,room);
+            String query1=String.format("INSERT INTO BOOKS (book_id, name, publisher, price, pages, language, shelfno, roomno) VALUES ('%s','%s','%s',%d,%d,'bangla','%s','%s')",bookid,bookname,publisher,price,pages,shelf,room);
             oc.updateDB(query1);
             System.out.println("inserted bookinfo successfully");
 
@@ -180,6 +202,36 @@ public class AddnewbooksController {
                 oc.updateDB(query2);
 
             }
+            if(childrenchkbox.isSelected())
+            {
+                catname="Children";
+                String query2=String.format("INSERT INTO BookCategory VALUES('%s','%s')",bookid,catname);
+                oc.updateDB(query2);
+            }
+            if(comicschkbox.isSelected())
+            {
+                catname="Comics";
+                String query2=String.format("INSERT INTO BookCategory VALUES('%s','%s')",bookid,catname);
+                oc.updateDB(query2);
+            }
+            if(detectivechkbox.isSelected())
+            {
+                catname="Detective";
+                String query2=String.format("INSERT INTO BookCategory VALUES('%s','%s')",bookid,catname);
+                oc.updateDB(query2);
+            }
+            if(academicchkbox.isSelected())
+            {
+                catname="Academic";
+                String query2=String.format("INSERT INTO BookCategory VALUES('%s','%s')",bookid,catname);
+                oc.updateDB(query2);
+            }
+            if(adventurechkbox.isSelected())
+            {
+                catname="Adventure";
+                String query2=String.format("INSERT INTO BookCategory VALUES('%s','%s')",bookid,catname);
+                oc.updateDB(query2);
+            }
 
 
             if(selltyperdobtn.isSelected())
@@ -192,12 +244,14 @@ public class AddnewbooksController {
             {
                 String query2=String.format("INSERT INTO Borrowtype VALUES('%s',%d,%d)",bookid,quantity,quantity);
                 oc.updateDB(query2);
-
             }
 
-            System.out.println("all book infos inserted successfully");
+
             Stage stage= (Stage) booknamefld.getScene().getWindow();
             stage.hide();
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Book added successfully");
+            a.showAndWait();
 
 
         } catch (Exception e) {

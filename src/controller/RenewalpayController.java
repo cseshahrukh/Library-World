@@ -24,8 +24,13 @@ public class RenewalpayController {
             return;
         }
         try {
+            //String query1 = String.format("Select expiredate from users where username is '%s'", user);
+            //ResultSet rs=oc.searchDB(query1);
+            //rs.next();
+
+
             String query = String.format("UPDATE Users \n" +
-                    "SET expiredate=expiredate+%d*30 WHERE username='%s'",months,user);
+                    "SET expiredate=expiredate+%d*30 WHERE username='%s'",months, user);
             oc.updateDB(query);
 
             String query1=String.format("INSERT into PAYMENTS values('%s',%d,sysdate)",user,months*100);

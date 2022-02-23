@@ -85,8 +85,8 @@ public class showreviewsController {
                 bk.userid=rs.getString("username");
                 bk.star=rs.getInt("star");
                 bk.comment=rs.getString("commont");
-                String query1=String.format("Select name from books where book_id='%s'",bk.bookid);
-                ResultSet rs1=oc.searchDB("query1");
+                String query1=String.format("select name from books where book_id='%s'",bk.bookid);
+                ResultSet rs1=oc.searchDB(query1);
                 rs1.next();
                 bk.bookname=rs1.getString("name");
                 list.add(bk);

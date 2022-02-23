@@ -153,7 +153,7 @@ public class AddbookController {
         bookidfld.setText(bk.bookid);
     }
 
-    public void confirmbtnclicked(ActionEvent actionEvent) {
+    public void confirmbtnclicked(ActionEvent actionEvent) throws Exception {
         DbConn oc;
         Book bk=null;
         try {
@@ -163,7 +163,17 @@ public class AddbookController {
             return;
         }
 
+        if(qunatityfld.getText().equals(""))
+        {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Please add quantity");
+            a.showAndWait();
+            oc.close();
+            return;
+        }
+
         int quantity=Integer.parseInt(qunatityfld.getText());
+
         String bookid=bookidfld.getText();
 
         try
@@ -173,7 +183,7 @@ public class AddbookController {
                 ResultSet rs = oc.searchDB(query1);
                 if(!rs.next())
                 {
-                    String query2=String.format("INSERT INTO Selltype VALUES('%s',%d)",bookid,quantity);
+                    String query2=String.format("INSERT INTO Selltype (book_id, count) VALUES('%s',%d)",bookid,quantity);
                     oc.updateDB(query2);
                     System.out.println("inserted successfully");
 
@@ -196,7 +206,7 @@ public class AddbookController {
                 {
                     String query2=String.format("INSERT INTO Borrowtype VALUES('%s',%d,%d)",bookid,quantity,quantity);
                     oc.updateDB(query2);
-                    System.out.println("inserted successfully");
+
                 }
                 else
                 {

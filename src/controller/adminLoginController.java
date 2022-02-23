@@ -3,7 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.signUpController;
 import startup.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -15,6 +14,7 @@ import java.sql.ResultSet;
 public class adminLoginController {
     public TextField tf_user;
     public PasswordField tf_password;
+    public static String currentadminid;
 
 
     public static boolean validUser(String user_name)
@@ -93,6 +93,7 @@ public class adminLoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("AdminIDNotFound");
             alert.show();
+            return;
 
         }
         String actualPass=getPassword(username);
@@ -102,10 +103,12 @@ public class adminLoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("PasswordNotFound");
             alert.show();
+            return;
         }
 
         else
         {
+            currentadminid=tf_user.getText();
             Stage stage= (Stage) tf_user.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../fxml/adminhomepage.fxml"));
             stage.setTitle("Library Management System");
@@ -115,16 +118,5 @@ public class adminLoginController {
             stage.show();
 
         }
-    }
-
-    public void back(ActionEvent actionEvent) throws Exception
-    {
-        Stage stage= (Stage) tf_user.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
-        stage.setTitle("Library Management System");
-        stage.setScene(new Scene(root, 600,400));
-        //stage.setScene(new Scene(root, 900,700));
-        stage.setResizable(false);
-        stage.show();
     }
 }

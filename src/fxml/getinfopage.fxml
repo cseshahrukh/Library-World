@@ -18,6 +18,6 @@
       <Button layoutX="116.0" layoutY="248.0" mnemonicParsing="false" onAction="#earninginfobtnclicked" prefHeight="52.0" prefWidth="103.0" text="Payment History" />
       <Button layoutX="447.0" layoutY="130.0" mnemonicParsing="false" onAction="#buyhistorybtnclicked" prefHeight="52.0" prefWidth="77.0" text="Buy History" />
       <Button layoutX="297.0" layoutY="248.0" mnemonicParsing="false" onAction="#userinfobtnclicked" prefHeight="52.0" prefWidth="80.0" text="User info" />
-      <Button layoutX="546.0" layoutY="419.0" mnemonicParsing="false" onAction="#homebtnclicked" text="Home" />
+      <Button layoutX="546.0" layoutY="419.0" mnemonicParsing="false" onAction="#homebtnclicked" style="-fx-background-color: FF3333;" text="Home" textFill="#f2ebeb" />
    </children>
 </AnchorPane>

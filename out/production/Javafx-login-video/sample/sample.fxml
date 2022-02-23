@@ -19,12 +19,27 @@
                   <Image url="@../sample/wittcode-logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="43.0" layoutY="200.0" text="(555)-555-5555" textFill="WHITE">
+            <Label layoutX="43.0" layoutY="200.0" text="We Connect " textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="264.0" text="Library World" textFill="#fffefe">
+            <Label layoutX="39.0" layoutY="14.0" text="Library World" textFill="#fffefe">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="233.0" text="BOOKS" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="266.0" text="with" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="79.0" layoutY="301.0" text="YOU" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -73,12 +88,12 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="button_sign_up1" layoutX="250.0" layoutY="14.0" mnemonicParsing="false" onAction="#admin" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Click Here!" textFill="#296dda" underline="true">
+            <Button fx:id="button_sign_up1" layoutX="264.0" layoutY="57.0" mnemonicParsing="false" onAction="#admin" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Click Here!" textFill="#296dda" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Button>
-            <Label layoutX="175.0" layoutY="19.0" text="Admin?">
+            <Label layoutX="283.0" layoutY="26.0" text="Admin?">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>

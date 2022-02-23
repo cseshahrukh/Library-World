@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddnewbooksController">
+<AnchorPane prefHeight="575.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddnewbooksController">
    <children>
       <Label layoutX="62.0" layoutY="94.0" prefHeight="22.0" prefWidth="84.0" text="Book Name">
          <font>
@@ -54,16 +58,16 @@
       <TextField fx:id="pagesfld" layoutX="378.0" layoutY="271.0" prefHeight="25.0" prefWidth="118.0" />
       <TextField fx:id="pricefld" layoutX="135.0" layoutY="271.0" prefHeight="25.0" prefWidth="118.0" />
       <TextField fx:id="shelffld" layoutX="378.0" layoutY="213.0" prefHeight="25.0" prefWidth="118.0" />
-      <Label layoutX="68.0" layoutY="330.0" prefHeight="22.0" prefWidth="126.0" text="Select book genre">
+      <Label layoutX="62.0" layoutY="316.0" prefHeight="22.0" prefWidth="126.0" text="Select book genre">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <CheckBox fx:id="novelchkbox" layoutX="90.0" layoutY="367.0" mnemonicParsing="false" text="Novel" />
-      <CheckBox fx:id="biochkbox" layoutX="233.0" layoutY="367.0" mnemonicParsing="false" text="Biography" />
-      <CheckBox fx:id="poetrychkbox" layoutX="641.0" layoutY="367.0" mnemonicParsing="false" text="Poetry" />
-      <CheckBox fx:id="dramachkbox" layoutX="501.0" layoutY="367.0" mnemonicParsing="false" text="Drama" />
-      <CheckBox fx:id="storychkbox" layoutX="378.0" layoutY="367.0" mnemonicParsing="false" text="Story" />
+      <CheckBox fx:id="novelchkbox" layoutX="78.0" layoutY="338.0" mnemonicParsing="false" text="Novel" />
+      <CheckBox fx:id="biochkbox" layoutX="178.0" layoutY="338.0" mnemonicParsing="false" text="Biography" />
+      <CheckBox fx:id="poetrychkbox" layoutX="459.0" layoutY="338.0" mnemonicParsing="false" text="Poetry" />
+      <CheckBox fx:id="dramachkbox" layoutX="366.0" layoutY="338.0" mnemonicParsing="false" text="Drama" />
+      <CheckBox fx:id="storychkbox" layoutX="276.0" layoutY="338.0" mnemonicParsing="false" text="Story" />
       <Label layoutX="522.0" layoutY="214.0" prefHeight="22.0" prefWidth="72.0" text="Room No">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -93,5 +97,10 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
+      <CheckBox fx:id="childrenchkbox" layoutX="550.0" layoutY="338.0" mnemonicParsing="false" text="Children" />
+      <CheckBox fx:id="comicschkbox" layoutX="76.0" layoutY="370.0" mnemonicParsing="false" text="Comics" />
+      <CheckBox fx:id="detectivechkbox" layoutX="178.0" layoutY="370.0" mnemonicParsing="false" text="Detective" />
+      <CheckBox fx:id="academicchkbox" layoutX="273.0" layoutY="370.0" mnemonicParsing="false" text="Academic" />
+      <CheckBox fx:id="adventurechkbox" layoutX="371.0" layoutY="370.0" mnemonicParsing="false" text="Adventure" />
    </children>
 </AnchorPane>

@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import controller.*;
 
 public class Controller  {
 
@@ -60,12 +60,28 @@ public class Controller  {
 
     public void sign_upAction() throws Exception {
 
+        //if(main==null)
+            //main=new Main();
         main.signUpHome();
         //main.changeScene("sign-up.sample.fxml", "Sign Up!", null);
+
+
+        /*
+        Stage stage= (Stage) tf_user.getScene().getWindow();
+        //stage.hide();
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("sign-up.fxml"));
+        Parent root = loader.load();
+        stage.setTitle("Sign Up Page");
+        stage.setScene(new Scene(root,762,570));
+        stage.show();
+
+         */
     }
 
     public void admin(ActionEvent event) throws IOException
     {
+        /*
         Stage stage=(Stage)button_login.getScene().getWindow();
         //main.stage=primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
@@ -74,12 +90,29 @@ public class Controller  {
         //stage.setScene(new Scene(root, 900,700));
         stage.setResizable(false);
         stage.show();
+
+        */
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/login.fxml"));
+        Parent root = loader.load();
+        adminLoginController controller=loader.getController();
+
+        //controller.setMain(this.main);
+        //controller.main=this.main;
+        //controller.load(username);
+
+
+
+        main.stage.setTitle("Login");
+        main.stage.setScene(new Scene(root, 800, 680));
+        main.stage.show();
     }
 
 
 
 
-    void setMain(Main main) {
+    public void setMain(Main main) {
         this.main = main;
     }
 }

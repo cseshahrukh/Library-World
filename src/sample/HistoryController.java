@@ -25,21 +25,26 @@ public class HistoryController {
 
     public TableView<HistoryBook> borrowtbl;
     public TableView<HistoryBook> buytbl;
+    public TableView<HistoryBook> buytbl1;
     public TableColumn<HistoryBook,String> bookidclm;
     public TableColumn<HistoryBook,String> booknameclm;
     public TableColumn<HistoryBook,String> borrowdateclm;
     public TableColumn<HistoryBook,String> returndateclm;
     public TableColumn<HistoryBook, Integer> quantityclm;
+    public TableColumn<HistoryBook, Integer> quantityclm1;
 
     public TableColumn<HistoryBook,String> bookidclm1;
     public TableColumn<HistoryBook,String> booknameclm1;
     public TableColumn<HistoryBook,String> dateclm;
+    public TableColumn<HistoryBook,String> bookidclm11;
+    public TableColumn<HistoryBook,String> booknameclm11;
     public TextField requestfld;
 
 
 
     ObservableList<HistoryBook> list= FXCollections.observableArrayList();
     ObservableList<HistoryBook> list1= FXCollections.observableArrayList();
+    ObservableList<HistoryBook> list2= FXCollections.observableArrayList();
 
 
 
@@ -62,6 +67,7 @@ public class HistoryController {
         HistoryBook bk;
         list.clear();
         list1.clear();
+        list2.clear();
 
         try {
             oc = new OracleConnect();
@@ -165,6 +171,42 @@ public class HistoryController {
                 System.out.println("Count is "+ count);
                 setTable1();
             }
+
+
+
+            query="";
+
+            query = String.format("SELECT book_id, quantity, " +
+                    "(SELECT name from books where books.book_id=requestbuy.book_id) bookname"  +
+                    " FROM requestbuy WHERE username = '%s' AND isbought='N'", username);
+
+            rs = oc.searchDB(query);
+
+
+            System.out.println("After query search");
+            count=0;
+            while (rs.next()) {
+                System.out.println(rs);
+                bk=new HistoryBook();
+                bk.book_id=rs.getString("book_id");
+                bk.bookname=rs.getString("bookname");
+                bk.setQuantity(rs.getInt("quantity"));
+                list2.add(bk);
+                count++;
+            }
+            if(count==0)
+            {
+                System.out.println("No books found");
+            }
+            else
+            {
+                System.out.println("request buy er count is "+count);
+                System.out.println("Count is "+ count);
+                setTable2();
+            }
+
+
+
         } catch (Exception throwables) {
             System.out.println("Show tei problem");
             throwables.printStackTrace();
@@ -188,7 +230,13 @@ public class HistoryController {
         try {
             String query="";
 
-            query = String.format("SELECT * from requestborrow where username='%s' AND isborrowed='n' AND isreturned='n' AND sysdate<end_time", username);
+            //query = String.format("SELECT * from requestborrow where username='%s' AND isborrowed='n' AND isreturned='n' AND sysdate<endtime", username);
+
+
+            query = String.format("SELECT * FROM REQUESTBORRow \n" +
+                    "where username = '%s' AND (SYSDATE<ENDTIME) AND isborrowed='N'" +
+                    " ", username);
+
 
             ResultSet rs = oc.searchDB(query);
 
@@ -248,6 +296,16 @@ public class HistoryController {
         buytbl.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
+    private void setTable2()
+    {
+        System.out.println("inside Set Table ");
+        bookidclm11.setCellValueFactory(new PropertyValueFactory<HistoryBook, String>("book_id"));
+        booknameclm11.setCellValueFactory(new PropertyValueFactory<HistoryBook, String>("bookname"));
+        quantityclm1.setCellValueFactory(new PropertyValueFactory<HistoryBook, Integer>("quantity"));
+        buytbl1.setItems(list2);
+        buytbl1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
 
     public void back(javafx.event.ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader();
@@ -294,12 +352,17 @@ public class HistoryController {
             String query="";
 
             query = String.format("SELECT * from requestborrow where username='%s' AND isborrowed='n' AND isreturned='n'", username);
+            query = String.format("SELECT * from requestborrow where username='%s' AND REQUESTID not in " +
+                    "(SELECT BORROWID FROM BORROWBOOK)", username);
 
             ResultSet rs = oc.searchDB(query);
 
             if (rs.next()) {
                 System.out.println("before delete");
-                query=String.format("DELETE from requestborrow where username='%s' AND isborrowed='n' AND isreturned='n'", username);
+                query=String.format("DELETE from requestborrow where username='%s' AND REQUESTID not in " +
+                        "(SELECT BORROWID FROM BORROWBOOK) ", username);
+
+
                 oc.updateDB(query);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Successfully Deleted the request");

@@ -65,6 +65,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="623.0" layoutY="506.0" mnemonicParsing="false" onAction="#homebtnclicked" text="Home" />
+      <Button layoutX="623.0" layoutY="506.0" mnemonicParsing="false" onAction="#homebtnclicked" style="-fx-background-color: FF3333;" text="Home" textFill="#fcf3f3" />
     </children>
 </AnchorPane>

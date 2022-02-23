@@ -90,7 +90,7 @@ public class Book {
     }
 
     String publisher;
-    int price;
+    Integer price;
     int pages;
     String language;
 

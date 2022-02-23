@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import startup.DbConn;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PaymentpageController {
 
@@ -46,7 +48,7 @@ public class PaymentpageController {
 
         try {
             String query = String.format("SELECT count(*) count from Users \n" +
-                    "WHERE username='%s' AND expiredate<sysdate",user);
+                    "WHERE username='%s' AND expiredate<sysdate ",user);
             ResultSet rs = oc.searchDB(query);
             rs.next();
             int count=rs.getInt("count");
@@ -145,6 +147,7 @@ public class PaymentpageController {
 
 
     public void searchbtnclicked(ActionEvent actionEvent) {
+        DbConn oc;
         validexpiredlbl.setVisible(false);
         validnotexpiredlbl.setVisible(false);
         fines1lbl.setVisible(false);
@@ -153,6 +156,32 @@ public class PaymentpageController {
         finesbtn.setVisible(false);
         String user=userid.getText().trim();
         username=user;
+        try {
+            oc = new DbConn();
+        } catch (Exception e) {
+            System.out.println("problem in connection");
+            return;
+        }
+        try
+        {
+            String query3=String.format("select count(*) count from Users where username='%s'",user);
+            ResultSet rs3=oc.searchDB(query3);
+            rs3.next();
+            int t=rs3.getInt("count");
+            if(t==0)
+            {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("No such user exists");
+                a.showAndWait();
+                return;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         int chkfine=checkforfines(user);
         int chkval=checkforvalidity(user);
         if(chkval==0)

@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import startup.Book;
@@ -39,6 +36,7 @@ public class earninginfoController {
     public int totalfines,userpayments,totalpayments;
     public DatePicker fromdatepicker;
     public DatePicker todatepicker;
+    public TextField useridfld;
 
     ObservableList<Book> list= FXCollections.observableArrayList();
     ObservableList<Book> list2= FXCollections.observableArrayList();
@@ -63,8 +61,7 @@ public class earninginfoController {
 
     }
 
-    //Eitai mone hocche
-    private void setfinedata()
+    private void setfinedata(String user)
     {
         String from,to;//from datepicker to string conversion
         LocalDate fromdate=fromdatepicker.getValue();
@@ -84,7 +81,16 @@ public class earninginfoController {
         try
         {
             int count=0;
-            String query = String.format("SELECT userid,borrowid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from FinesPayment where paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY')",from,to);
+            String query;
+            if(user.equals(""))
+            {
+                query = String.format("SELECT userid,borrowid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from FinesPayment where paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY')",from,to);
+            }
+            else
+            {
+                query= String.format("SELECT userid,borrowid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from FinesPayment where userid='%s' AND paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY')",user,from,to);
+            }
+
             ResultSet rs = oc.searchDB(query);
             //System.out.println(user);
             while (rs.next()) {
@@ -123,7 +129,9 @@ public class earninginfoController {
             }
             if(count==0)
             {
-                System.out.println("no fines during this period");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("No finespayment during this time");
+                alert.show();
             }
             else
             {
@@ -149,7 +157,7 @@ public class earninginfoController {
 
     }
 
-    private void setuserpaymentdata()
+    private void setuserpaymentdata(String user)
     {
         String from,to;//from datepicker to string conversion
         LocalDate fromdate=fromdatepicker.getValue();
@@ -169,7 +177,18 @@ public class earninginfoController {
         try
         {
             int count=0;
-            String query = String.format("select userid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from payments where paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY') ",from,to);
+            String query;
+            if(user.equals(""))
+            {
+                query = String.format("select userid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from payments where paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY') ",from,to);
+
+            }
+            else
+            {
+                query = String.format("select userid,paymentamount,to_char(paymentdate,'DD-MM-YYYY') paymentdate from payments where userid='%s' AND paymentdate>to_date('%s','DD-MM-YYYY') AND paymentdate<to_date('%s','DD-MM-YYYY') ",user,from,to);
+
+            }
+
             ResultSet rs = oc.searchDB(query);
             //System.out.println(user);
             while (rs.next()) {
@@ -186,7 +205,9 @@ public class earninginfoController {
             }
             if(count==0)
             {
-                System.out.println("no userpayment during this period");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("No payment during this time");
+                alert.show();
             }
             else
             {
@@ -214,8 +235,9 @@ public class earninginfoController {
     }
 
     public void okbtnclicked(ActionEvent actionEvent) {
-        setfinedata();
-        setuserpaymentdata();
+        String us=useridfld.getText().trim();
+        setfinedata(us);
+        setuserpaymentdata(us);
         totalpayments=totalfines+userpayments;
         finesfld.setText(String.valueOf(totalfines));
         upfld.setText(String.valueOf(userpayments));

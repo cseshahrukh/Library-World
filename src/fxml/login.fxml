@@ -51,16 +51,6 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="37.0" layoutY="345.0" text="Not an Admin?">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="button_sign_up" layoutX="145.0" layoutY="340.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Click_Here" textFill="#296dda" underline="true">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
    </children>

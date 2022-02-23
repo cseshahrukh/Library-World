@@ -267,6 +267,7 @@ public class Main extends Application {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("UserNameNotFound");
             alert.show();
+            return;
 
         }
         String actualPass=getPassword(username);
@@ -276,6 +277,7 @@ public class Main extends Application {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("PasswordNotFound");
             alert.show();
+            return;
         }
 
         else

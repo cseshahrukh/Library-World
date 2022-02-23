@@ -76,6 +76,18 @@ public class BookBorrowController {
         }
         try
         {
+            String query3=String.format("select count(*) count from Users where username='%s'",user);
+            ResultSet rs3=oc.searchDB(query3);
+            rs3.next();
+            int t=rs3.getInt("count");
+            if(t==0)
+            {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("No such user exists");
+                a.showAndWait();
+                return;
+            }
+
             int count=0;
             String query = String.format("select book_id,RequestID from RequestBorrow where username='%s' AND EndTime>SYSDATE AND IsBorrowed='N' ",username);
             ResultSet rs = oc.searchDB(query);

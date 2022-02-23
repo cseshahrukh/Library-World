@@ -10,24 +10,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="572.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HistoryController">
+<AnchorPane prefHeight="583.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HistoryController">
    <children>
-      <SplitPane dividerPositions="0.5375" orientation="VERTICAL" prefHeight="509.0" prefWidth="478.0">
+      <SplitPane dividerPositions="0.5375" orientation="VERTICAL" prefHeight="509.0" prefWidth="462.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView fx:id="borrowtbl" layoutY="30.0" prefHeight="219.0" prefWidth="457.0">
+                  <TableView fx:id="borrowtbl" layoutY="30.0" prefHeight="219.0" prefWidth="460.0">
                      <columns>
-                        <TableColumn fx:id="bookidclm" prefWidth="103.0" text="BookID" />
-                        <TableColumn fx:id="booknameclm" prefWidth="131.0" text="Book Name" />
-                        <TableColumn fx:id="borrowdateclm" prefWidth="114.0" text="BorrowDate" />
-                        <TableColumn fx:id="returndateclm" prefWidth="98.0" text="ReturnDate" />
+                        <TableColumn fx:id="bookidclm" prefWidth="88.0" text="BookID" />
+                        <TableColumn fx:id="booknameclm" prefWidth="118.0" text="Book Name" />
+                        <TableColumn fx:id="borrowdateclm" prefWidth="107.0" text="BorrowDate" />
+                        <TableColumn fx:id="returndateclm" prefWidth="133.0" text="ReturnDate" />
                      </columns>
                      <effect>
                         <DropShadow />
                      </effect>
                   </TableView>
-                  <Label layoutX="296.0" layoutY="4.0" text="BorrowHistory">
+                  <Label layoutX="145.0" layoutY="4.0" text="BorrowHistory">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>
@@ -36,15 +36,15 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="492.0">
                <children>
-                  <TableView fx:id="buytbl" layoutY="31.0" prefHeight="188.0" prefWidth="457.0">
+                  <TableView fx:id="buytbl" layoutY="31.0" prefHeight="188.0" prefWidth="460.0">
                     <columns>
-                      <TableColumn fx:id="bookidclm1" prefWidth="113.0" text="BookID" />
-                      <TableColumn fx:id="booknameclm1" prefWidth="130.0" text="Book Name" />
-                        <TableColumn fx:id="dateclm" prefWidth="106.0" text="Date" />
+                      <TableColumn fx:id="bookidclm1" prefWidth="85.0" text="BookID" />
+                      <TableColumn fx:id="booknameclm1" prefWidth="150.0" text="Book Name" />
+                        <TableColumn fx:id="dateclm" prefWidth="114.0" text="Date" />
                         <TableColumn fx:id="quantityclm" minWidth="0.0" prefWidth="117.0" text="Quantity" />
                     </columns>
                   </TableView>
-                  <Label layoutX="296.0" layoutY="4.0" text="BuyHistory">
+                  <Label layoutX="177.0" layoutY="4.0" text="BuyHistory">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>
@@ -74,5 +74,17 @@
          </font>
       </Label>
       <TextField fx:id="requestfld" editable="false" layoutX="503.0" layoutY="67.0" />
+      <TableView fx:id="buytbl1" layoutX="488.0" layoutY="278.0" prefHeight="231.0" prefWidth="269.0">
+         <columns>
+            <TableColumn fx:id="bookidclm11" prefWidth="84.0" text="BookID" />
+            <TableColumn fx:id="booknameclm11" prefWidth="96.0" text="Book Name" />
+            <TableColumn fx:id="quantityclm1" minWidth="0.0" prefWidth="85.0" text="Quantity" />
+         </columns>
+      </TableView>
+      <Label layoutX="559.0" layoutY="245.0" text="ActiveBuyRequest">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

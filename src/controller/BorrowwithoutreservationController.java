@@ -105,7 +105,7 @@ public class BorrowwithoutreservationController {
                     System.out.println("catname is " + catname);
                     query = String.format("SELECT book_id,name,ShelfNo,RoomNo,price,publisher FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from bookcategory where LOWER(categoryname) LIKE '%s')", catname);
                 }
 
                 //name and writer
@@ -137,7 +137,7 @@ public class BorrowwithoutreservationController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price,publisher FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from bookcategory where LOWER(categoryname) LIKE '%s')", catname);
                     query = query1 + " INTERSECT " + query2;
 
                 }
@@ -158,7 +158,7 @@ public class BorrowwithoutreservationController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price,publisher FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from bookcategory where LOWER(categoryname) LIKE '%s')", catname);
                     query = query1 + " INTERSECT " + query2;
 
                 }
@@ -188,7 +188,7 @@ public class BorrowwithoutreservationController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price,publisher FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from bookcategory where LOWER(categoryname) LIKE '%s')", catname);
                     query = query0 + " INTERSECT " + query1 + " INTERSECT " + query2;
                 } else if ((bookName == null || bookName.getText().compareTo("") == 0) && (writer == null || writer.getText().compareTo("") == 0) && (category == null || category.getText().compareTo("") == 0)) {
                     query = String.format("SELECT book_id,name,ShelfNo,RoomNo,price,publisher FROM BOOKS ");
@@ -454,7 +454,7 @@ public class BorrowwithoutreservationController {
         try
         {
             String query=String.format("SELECT count(*) count from USERS\n" +
-                    "where username='%s' AND isactive='N'",user);
+                    "where username='%s' AND isactive<>'y'",user);
             ResultSet rs=oc.searchDB(query);
             rs.next();
             int count=rs.getInt("count");

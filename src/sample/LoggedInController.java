@@ -63,6 +63,7 @@ public class LoggedInController {
     public TableColumn<Book,String> writer3clm;
     public TableColumn<Book,String> shelfclm;
     public TableColumn<Book,String> roomclm;
+    public TableColumn<Book,Integer> priceclm;
     ObservableList<Book> list= FXCollections.observableArrayList();
 
     public void initialize()
@@ -84,7 +85,9 @@ public class LoggedInController {
         writer3clm.setCellValueFactory(new PropertyValueFactory<Book,String>("writer3"));
         shelfclm.setCellValueFactory(new PropertyValueFactory<Book,String>("shelfNo"));
         roomclm.setCellValueFactory(new PropertyValueFactory<Book,String>("roomNo"));
+        priceclm.setCellValueFactory(new PropertyValueFactory<Book,Integer>("price"));
         bookstbl.setItems(list);
+
         bookstbl.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
@@ -137,7 +140,10 @@ public class LoggedInController {
 
         controller.setBook_idd(bk.book_id);
         controller.setMain(this.main);
-        controller.load(bk.book_id);
+        controller.load(bk.book_id, username);
+
+
+
 
 
         System.out.println("before loadercontroller");
@@ -148,12 +154,8 @@ public class LoggedInController {
         //controller.setBook_id(bk.book_id);
         // Set the primary stage
         main.stage.setTitle("Login");
-        main.stage.setScene(new Scene(root, 600, 400));
+        main.stage.setScene(new Scene(root, 780, 570));
         main.stage.show();
-
-
-
-
 
     }
 
@@ -218,12 +220,18 @@ public class LoggedInController {
             {
                 String updateQuery=String.format("UPDATE REVIEW SET star = %d, commont = '%s' WHERE book_id='%s' AND username='%s'",num, msg,bookid, username);
                 oc.updateDB(updateQuery);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText("Thanks for your review!");
+                alert.show();
             }
             else
             {
                 String updateQuery=String.format("Insert into REVIEW ( book_id, username, star, commont)" +
                         "values('%s', '%s', %d, '%s')",  bookid, username, num, msg);
                 oc.updateDB(updateQuery);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText("Thanks for your review!");
+                alert.show();
             }
 
 
@@ -281,7 +289,7 @@ public class LoggedInController {
                 String searchname=bookName.getText().trim().toLowerCase();
                 searchname="%"+searchname+"%";
                 System.out.println("Search name is "+searchname);
-                query = String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS \n" +
+                query = String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS \n" +
                         "where LOWER(name) LIKE '%s'",  searchname);
             }
 
@@ -292,7 +300,7 @@ public class LoggedInController {
                 String writername=writer.getText().trim().toLowerCase();
                 writername="%"+writername+"%";
 
-                query=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from bookwriter where LOWER(writername) LIKE '%s')", writername);
             }
@@ -306,7 +314,7 @@ public class LoggedInController {
                 String catname=category.getText().trim().toLowerCase();
                 catname="%"+catname+"%";
                 System.out.println("catname is "+catname);
-                query=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from BOOkCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
             }
@@ -317,13 +325,13 @@ public class LoggedInController {
                 String searchname=bookName.getText().trim().toLowerCase();
                 searchname="%"+searchname+"%";
                 String query1="", query2="";
-                query1 = String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS \n" +
+                query1 = String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS \n" +
                         "where LOWER(name) LIKE '%s'",  searchname);
                 System.out.println("jeta chacchi shetai1");
                 String writername=writer.getText().trim().toLowerCase();
                 writername="%"+writername+"%";
 
-                query2=String.format(" SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query2=String.format(" SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from bookwriter where LOWER(writername) LIKE '%s')", writername);
                 query= query1+" INTERSECT "+ query2;
@@ -335,12 +343,12 @@ public class LoggedInController {
                 String searchname=bookName.getText().trim().toLowerCase();
                 searchname="%"+searchname+"%";
                 String query1="", query2="";
-                query1 = String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS \n" +
+                query1 = String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS \n" +
                         "where LOWER(name) LIKE '%s'",  searchname);
                 String catname=category.getText().trim().toLowerCase();
                 catname="%"+catname+"%";
                 System.out.println("catname is "+catname);
-                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                 query= query1+" INTERSECT "+ query2;
@@ -355,14 +363,14 @@ public class LoggedInController {
                 String writername=writer.getText().trim().toLowerCase();
                 writername="%"+writername+"%";
 
-                query1=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query1=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from bookwriter where LOWER(writername) LIKE '%s')", writername);
 
                 String catname=category.getText().trim().toLowerCase();
                 catname="%"+catname+"%";
                 System.out.println("catname is "+catname);
-                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                 query= query1+" INTERSECT "+ query2;
@@ -378,7 +386,7 @@ public class LoggedInController {
                 System.out.println("Search name is "+searchname);
 
 
-                query0 = String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS \n" +
+                query0 = String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS \n" +
                         "where LOWER(name) LIKE '%s'",  searchname);
 
                 String query1="", query2="";
@@ -386,14 +394,14 @@ public class LoggedInController {
                 String writername=writer.getText().trim().toLowerCase();
                 writername="%"+writername+"%";
 
-                query1=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query1=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from bookwriter where LOWER(writername) LIKE '%s')", writername);
 
                 String catname=category.getText().trim().toLowerCase();
                 catname="%"+catname+"%";
                 System.out.println("catname is "+catname);
-                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS WHERE book_id IN(" +
+                query2=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS WHERE book_id IN(" +
 
                         "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                 query= query0+ " INTERSECT "+query1+" INTERSECT "+ query2;
@@ -401,7 +409,7 @@ public class LoggedInController {
 
             else if ((bookName==null || bookName.getText().compareTo("")==0)&& (writer==null || writer.getText().compareTo("")==0) && (category==null || category.getText().compareTo("")==0))
             {
-                query=String.format("SELECT book_id,name,ShelfNo,RoomNo FROM BOOKS ");
+                query=String.format("SELECT book_id,name,ShelfNo,RoomNo, price FROM BOOKS ");
             }
 
             ResultSet rs = oc.searchDB(query);
@@ -414,6 +422,7 @@ public class LoggedInController {
                 bk.name=rs.getString("name");
                 bk.shelfNo=rs.getString("ShelfNo");
                 bk.roomNo=rs.getString("RoomNo");
+                bk.price=rs.getInt("price");
                 bk.writer1="N/A";
                 bk.writer2="N/A";
                 bk.writer3="N/A";
@@ -507,11 +516,17 @@ public class LoggedInController {
 
                 while (rs.next()) {
                     int amount = rs.getInt("total");
-                    //int amountRequest= rs.getInt("countRequest");
+
                     String query2 = String.format("SELECT count(*) from requestborrow where book_id='%s' AND isborrowed='n' AND SYSDATE<ENDTIME", bookid);
+
+                    //Eije change
+                    query2 = String.format("SELECT count(*) from requestborrow where book_id='%s' AND SYSDATE<ENDTIME AND isborrowed='N'" , bookid);
+
+
+
                     ResultSet rs2 = oc.searchDB(query2);
                     rs2.next();
-                    int amountRequest = rs2.getInt(1);
+                    int amountRequest = rs2.getInt(1); //count ta store hocche. database er kichu na
 
 
                     int quantity = 1;
@@ -523,18 +538,55 @@ public class LoggedInController {
                         ResultSet rs1 = oc.searchDB(query1);
                         while (rs1.next()) {
                             String isActive = rs1.getString("ISACTIVE");
-                            String canBorrow = rs1.getString("CANBORROW");
+                            //String canBorrow = rs1.getString("CANBORROW");
                             String expireDate = rs1.getString("EXPIREDATE");
                             user.setIsActive(isActive);
-                            user.setCanBorrow(canBorrow);
+                            //user.setCanBorrow(canBorrow);
                             user.setExpireDate(expireDate);
                         }
+                        if (user.getIsActive().equals("n"))
+                        {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("You are not active user");
+                            alert.show();
+                            return;
+                        }
 
-                        if (user.getCanBorrow().compareTo("y") == 0 && user.getIsActive().compareTo("y") == 0) {
+                        query=String.format("SELECT * FROM USERS WHERE sysdate>expiredate AND username='%s'", username);
+                        rs=oc.searchDB(query);
+                        if(rs.next())
+                        {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("Your validity is expired.");
+                            alert.show();
+                            return;
+                        }
+
+                        query=String.format("SELECT * FROM BORROWBOOK \n" +
+                                "where username = '%s' AND RETURNDATE is NULL", username);
+                        rs = oc.searchDB(query);
+                        if (rs.next())
+                        {
+                            user.setCanBorrow("n");
+                        }
+                        else
+                        {
+                            user.setCanBorrow("y");
+                        }
+
+
+                        if (user.getCanBorrow().compareTo("y") == 0) {
 
                             //already ekta request kore feleche
                             query = String.format("SELECT * FROM REQUESTBORRow \n" +
                                     "where username = '%s' AND ISBORROWED='n' AND (SYSDATE<ENDTIME)", username);
+
+                            query = String.format("SELECT * FROM REQUESTBORRow \n" +
+                                    "where username = '%s' AND (SYSDATE<ENDTIME) AND isborrowed='N'" +
+                                    " ", username);
+
+                            System.out.println("At 570 line");
+
                             rs = oc.searchDB(query);
                             if (rs.next()) {
                                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -547,6 +599,11 @@ public class LoggedInController {
                             //already borrow kore bashay rekhe diche ekta book
                             query = String.format("SELECT * FROM REQUESTBORRow \n" +
                                     "where username = '%s' AND ISBORROWED='y' AND ISRETURNED='n'", username);
+
+                            //mane boi niye return kore nai
+                            query=String.format("SELECT * FROM BORROWBOOK \n" +
+                                    "where username = '%s' AND RETURNDATE is NULL", username);
+
                             rs = oc.searchDB(query);
                             if (rs.next()) {
                                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -560,8 +617,18 @@ public class LoggedInController {
 
                             //oc.updateDB(updateQuery);
                             System.out.println("inside borrow click before update query");
-                            String updateQuery = String.format("Insert into REQUESTBORRow (username, book_id, requesttime, endtime, isborrowed, isreturned)" +
-                                    "values('%s', '%s', SYSDATE, SYSDATE+8/24, 'n', 'n')", username, bookid);
+
+                            query=String.format("SELECT NVL(max(requestid)+1, 1) value FRoM requestborrow");
+                            rs=oc.searchDB(query);
+                            rs.next();
+                            int requestid=rs.getInt("value");
+
+                            String updateQuery = String.format("Insert into REQUESTBORRow (username, book_id, requesttime, endtime, isborrowed, isreturned, requestid)" +
+                                    "values('%s', '%s', SYSDATE, SYSDATE+8/24, 'n', 'n', %d)", username, bookid, requestid);
+
+                            updateQuery = String.format("Insert into REQUESTBORRow (username, book_id, requesttime, endtime, requestid, isborrowed)" +
+                                    "values('%s', '%s', SYSDATE, SYSDATE+8/24, %d, 'N')", username, bookid, requestid);
+
                             oc.updateDB(updateQuery);
                             //System.out.println("here amount and amountRequest are "+ amount+" "+amountRequest);
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -570,9 +637,8 @@ public class LoggedInController {
 
 
                         } else {
-                            System.out.println("Not a valid user to buy");
                             Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setContentText("You can't buy");
+                            alert.setContentText("You can't borrow. Return the previous book you borroed.");
                             alert.show();
                         }
                     } else {
@@ -644,6 +710,8 @@ public class LoggedInController {
                 int amountRequest=rs2.getInt(1);
 
 
+
+
                 int quantity=1;
                 if (buyquantity!=null && buyquantity.getText().compareTo("")!=0)
                 {
@@ -658,8 +726,13 @@ public class LoggedInController {
                         alert.show();
                         return;
                     }
-
                 }
+
+                int quantity2=0;
+                query2= String.format("SELECT quantity from requestbuy where book_id='%s' AND isbought='n' AND SYSDATE<ENDTIME and username='%s'", bookid, username);
+                rs2=oc.searchDB(query2);
+                while(rs2.next())
+                    quantity2=quantity2+rs2.getInt("quantity");
                 if (amount-amountRequest-quantity>=0)
                 {
                     String query1 = String.format("SELECT * from USERS \n" +
@@ -669,55 +742,40 @@ public class LoggedInController {
                     while(rs1.next())
                     {
                         String isActive=rs1.getString("ISACTIVE");
-                        String canBorrow=rs1.getString("CANBORROW");
                         String expireDate=rs1.getString("EXPIREDATE");
                         user.setIsActive(isActive);
-                        user.setCanBorrow(canBorrow);
                         user.setExpireDate(expireDate);
                     }
 
-
-                    if (user.getCanBorrow().compareTo("y")==0 && user.getIsActive().compareTo("y")==0)
+                    if(quantity+quantity2>3)
                     {
-                            /* Eita borrow te applicable hobe just
-                            query = String.format("SELECT * FROM REQUESTBUY \n" +
-                                    "where username = '%s' AND ISBOUTGHT='n' AND (SYSDATE<REQUESTTIME)",  username);
-                            rs = oc.searchDB(query);
-                            if (rs.next()) {
-                                Alert alert = new Alert(Alert.AlertType.ERROR);
-                                alert.setContentText("You have already requested");
-                                alert.show();
-                                return;
-                            }
-                             */
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("You can't get more than 3 copies of a book including previous valid requests");
+                        alert.show();
+                        return;
+                    }
+
 
 
                         //String updateQuery=String.format("UPDATE SELLTYPE SET count = %d, countrequest = %d WHERE book_id='%s' ",amount-quantity, amountRequest+quantity, bookid);
 
                         //oc.updateDB(updateQuery);
-                        String updateQuery=String.format("Insert into REQUESTBUY (username, book_id, requesttime, endtime, quantity, isbought)" +
-                                "values('%s', '%s', SYSDATE, SYSDATE+8/24, %d, 'n')", username, bookid, quantity);
+
+
+                    query=String.format("SELECT NVL(max(requestid)+1, 1) value FRoM requestbuy");
+                    rs=oc.searchDB(query);
+                    rs.next();
+                    int requestid=rs.getInt("value");
+                        String updateQuery=String.format("Insert into REQUESTBUY (username, book_id, requesttime, endtime, quantity, isbought, requestid)" +
+                                "values('%s', '%s', SYSDATE, SYSDATE+8/24, %d, 'N', %d)", username, bookid, quantity, requestid);
                         oc.updateDB(updateQuery);
                         System.out.println("here amount and amountRequest are "+ amount+" "+amountRequest);
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setContentText("Success! Come in 8 hours to take it");
                         alert.show();
-
-
-                    }
-
-                    else
-                    {
-                        System.out.println("Not a valid user to buy");
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("You can't buy");
-                        alert.show();
-                    }
                 }
-
                 else
                 {
-                    System.out.println("Password Not Found");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Not Enough Books!! Sorry");
                     alert.show();

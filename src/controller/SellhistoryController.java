@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import startup.Book;
@@ -31,6 +28,7 @@ public class SellhistoryController {
     public TableColumn<Book,Integer> pbprice;
     public TableColumn<Book,Integer> subtotal;
     public TableColumn<Book,String> buydate;
+    public TextField totalamountfld;
 
     ObservableList<Book> list= FXCollections.observableArrayList();
     public String user;
@@ -108,11 +106,19 @@ public class SellhistoryController {
             }
             if(count==0)
             {
-                System.out.println("no books sold during this period");
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("No sell found during this period");
+                a.showAndWait();
             }
             else
             {
                 setbookstable();
+                int totalamount=0;
+                for(int i=0;i<list.size();i++)
+                {
+                    totalamount=totalamount+list.get(i).subtotal;
+                }
+                totalamountfld.setText(String.valueOf(totalamount));
             }
 
         } catch (Exception e) {

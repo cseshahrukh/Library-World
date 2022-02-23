@@ -83,4 +83,42 @@ public class AdminhomepageController {
         stage.show();
 
     }
+
+    public void backbtnclicked(ActionEvent actionEvent) throws Exception {
+        Stage stage= (Stage) bookborrowbtn.getScene().getWindow();
+        //stage.hide();
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/login.fxml"));
+        Parent root = loader.load();
+        //stage.setTitle("Add books Page");
+        stage.setScene(new Scene(root,600,400));
+        stage.show();
+
+    }
+
+    public void profilebtnclicked(ActionEvent actionEvent) throws Exception {
+        Stage stage= (Stage) bookborrowbtn.getScene().getWindow();
+        //stage.hide();
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/adminprofileupdate.fxml"));
+        Parent root = loader.load();
+        //stage.setTitle("Add books Page");
+        AdminprofileupdateController adm=loader.getController();
+        stage.setScene(new Scene(root,784,570));
+        adm.load();
+        stage.show();
+
+    }
+
+    public void securitycollbtnclicked(ActionEvent actionEvent) throws Exception{
+        Stage stage= (Stage) bookborrowbtn.getScene().getWindow();
+        //stage.hide();
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/securitymoney.fxml"));
+        Parent root = loader.load();
+        //stage.setTitle("Add books Page");
+        stage.setScene(new Scene(root,518,300));
+        stage.show();
+
+    }
 }

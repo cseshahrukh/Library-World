@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminprofileupdateController">
+    <children>
+        <Button layoutX="671.0" layoutY="515.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Back" textFill="#296dda" underline="true">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="namefld" editable="false" layoutX="178.0" layoutY="45.0" prefHeight="25.0" prefWidth="493.0" />
+        <Label layoutX="70.0" layoutY="48.0" text="Name">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="68.0" layoutY="90.0" text="AdminID">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="57.0" layoutY="161.0" text="PeopleID">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="79.0" layoutY="210.0" text="Email">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="73.0" layoutY="263.0" text="Adress">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="76.0" layoutY="308.0" text="Phone">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="58.0" layoutY="357.0" text="Date of Birth">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="adminidfld" editable="false" layoutX="178.0" layoutY="87.0" prefHeight="25.0" prefWidth="493.0" />
+        <TextField fx:id="dobfld" editable="false" layoutX="178.0" layoutY="354.0" prefHeight="25.0" prefWidth="493.0" />
+        <TextField fx:id="phonefld" layoutX="178.0" layoutY="305.0" prefHeight="25.0" prefWidth="493.0" />
+        <TextField fx:id="addressfld" layoutX="178.0" layoutY="260.0" prefHeight="25.0" prefWidth="493.0" />
+        <TextField fx:id="emailfld" layoutX="178.0" layoutY="207.0" prefHeight="25.0" prefWidth="493.0" />
+        <TextField fx:id="peopleidfld" editable="false" layoutX="178.0" layoutY="158.0" prefHeight="25.0" prefWidth="493.0" />
+        <Button layoutX="329.0" layoutY="435.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Update" textFill="#296dda" underline="true">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Button>
+      <TextField fx:id="passswordfld" layoutX="178.0" layoutY="121.0" prefHeight="25.0" prefWidth="493.0" />
+      <Label layoutX="58.0" layoutY="124.0" text="Password">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

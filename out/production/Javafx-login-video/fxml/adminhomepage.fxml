@@ -12,11 +12,14 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="addbookbtn" layoutX="145.0" layoutY="118.0" mnemonicParsing="false" onAction="#addbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Add Books" />
-      <Button layoutX="333.0" layoutY="271.0" mnemonicParsing="false" onAction="#takepaymentsbtnclicked" prefHeight="52.0" prefWidth="96.0" text="Take Payments" />
-      <Button layoutX="529.0" layoutY="271.0" mnemonicParsing="false" onAction="#getinfobtnclicked" prefHeight="52.0" prefWidth="82.0" text="Get Info" />
-      <Button fx:id="bookborrowbtn" layoutX="333.0" layoutY="118.0" mnemonicParsing="false" onAction="#bookborrowbtnclicked" prefHeight="52.0" prefWidth="96.0" text="Book Borrow" />
-      <Button fx:id="returnbookbtn" layoutX="529.0" layoutY="118.0" mnemonicParsing="false" onAction="#returnbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Return Book" />
-      <Button fx:id="sellbookbtn" layoutX="145.0" layoutY="271.0" mnemonicParsing="false" onAction="#sellbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Sell Books" />
+      <Button fx:id="addbookbtn" layoutX="74.0" layoutY="118.0" mnemonicParsing="false" onAction="#addbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Add Books" />
+      <Button layoutX="223.0" layoutY="271.0" mnemonicParsing="false" onAction="#takepaymentsbtnclicked" prefHeight="52.0" prefWidth="96.0" text="Take Payments" />
+      <Button layoutX="394.0" layoutY="271.0" mnemonicParsing="false" onAction="#getinfobtnclicked" prefHeight="52.0" prefWidth="82.0" text="Get Info" />
+      <Button fx:id="bookborrowbtn" layoutX="223.0" layoutY="118.0" mnemonicParsing="false" onAction="#bookborrowbtnclicked" prefHeight="52.0" prefWidth="96.0" text="Book Borrow" />
+      <Button fx:id="returnbookbtn" layoutX="388.0" layoutY="118.0" mnemonicParsing="false" onAction="#returnbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Return Book" />
+      <Button fx:id="sellbookbtn" layoutX="74.0" layoutY="271.0" mnemonicParsing="false" onAction="#sellbooksbtnclicked" prefHeight="52.0" prefWidth="82.0" text="Sell Books" />
+      <Button layoutX="611.0" layoutY="412.0" mnemonicParsing="false" onAction="#backbtnclicked" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: FF3333;" text="Log Out" textFill="#fcf6f6" />
+      <Button fx:id="returnbookbtn1" layoutX="546.0" layoutY="118.0" mnemonicParsing="false" onAction="#profilebtnclicked" prefHeight="52.0" prefWidth="107.0" text="My Profile" />
+      <Button layoutX="533.0" layoutY="271.0" mnemonicParsing="false" onAction="#securitycollbtnclicked" prefHeight="52.0" prefWidth="158.0" text="Security Money Collection" />
    </children>
 </AnchorPane>

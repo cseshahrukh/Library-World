@@ -7,6 +7,21 @@ public class Book {
     public int quantity,star;
     public int requestid,borrowid;
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
 
     public int getSubtotal() {
         return subtotal;

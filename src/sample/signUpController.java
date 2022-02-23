@@ -1,17 +1,12 @@
 package sample;
 
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.scene.control.*;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.ResourceBundle;
 
 public class signUpController {
 
@@ -102,7 +97,7 @@ public class signUpController {
                         if (rs.next())
                         {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setContentText("An user with this peopleID is already in database.");
+                            alert.setContentText("You are already registered with this peopleID.");
                             alert.show();
                             return;
                         }
@@ -126,8 +121,8 @@ public class signUpController {
                                 //done
 
                                 System.out.println("Before insert into users");
-                                String query1 = String.format("insert into users (username,password, peopleid) " +
-                                        "values ('%s', '%s', '%s')", usernamefld.getText(), passwordfld.getText(), peopleidfld.getText());
+                                String query1 = String.format("insert into users (username,password, peopleid, expiredate) " +
+                                        "values ('%s', '%s', '%s', sysdate)", usernamefld.getText(), passwordfld.getText(), peopleidfld.getText());
                                 oc.updateDB(query1);
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setContentText("Success!!");
@@ -136,19 +131,12 @@ public class signUpController {
 
                     }
 
-
-
-                    //All clear. People ID match koreche.
-                    //So just users table e entry korbo
                     else {
-                        //System.out.println("insdie else of addUser");
-                        String insertQuery = String.format(
-                                "insert into users (username, password) values ('%s', '%s')", usernamefld.getText(), passwordfld.getText());
-
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("No man with this people id");
                         alert.show();
                     }
+
                     System.out.println("Product with this Id already exisits");
                 } catch (Exception e) {
                     System.out.println("Exception in addProduct: " + e);
@@ -193,7 +181,7 @@ public class signUpController {
                     alert.show();
                 } else {
                     System.out.println("Inside else caluse ");
-                    query = String.format("SELECT max(TO_NUMBER(ID))+1 hey from PEOPLE");
+                    query = String.format("SELECT NVL(max(TO_NUMBER(ID))+1, 1) hey from PEOPLE");
                     rs = oc.searchDB(query);
                     rs.next();
                     System.out.println("After query search");
@@ -204,7 +192,7 @@ public class signUpController {
                     System.out.println("printing date format "+date);
                     System.out.println("Date is "+date);
                     String insertQuery = String.format(
-                            "insert into users (username, password, peopleID) values ('%s', '%s', '%s')", usernamefld.getText(), passwordfld.getText(), peopleID);
+                            "insert into users (username, password, peopleID, isactive, expiredate) values ('%s', '%s', '%s', 'n', sysdate)", usernamefld.getText(), passwordfld.getText(), peopleID);
 
                     oc.updateDB(insertQuery);
 

@@ -51,6 +51,7 @@ public class SellwithoutreservController {
     public TableColumn<Book,Integer> selpriceclm;
     public TextField payamountfld;
     public String user;
+    public int avail;
     ObservableList<Book> reslist= FXCollections.observableArrayList();
     ObservableList<Book> sellist= FXCollections.observableArrayList();
 
@@ -143,7 +144,7 @@ public class SellwithoutreservController {
                     System.out.println("catname is " + catname);
                     query = String.format("SELECT book_id,name,ShelfNo,RoomNo,price FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                 }
 
                 //name and writer
@@ -175,7 +176,7 @@ public class SellwithoutreservController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                     query = query1 + " INTERSECT " + query2;
 
                 }
@@ -196,7 +197,7 @@ public class SellwithoutreservController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                     query = query1 + " INTERSECT " + query2;
 
                 }
@@ -226,7 +227,7 @@ public class SellwithoutreservController {
                     System.out.println("catname is " + catname);
                     query2 = String.format("SELECT book_id,name,ShelfNo,RoomNo,price FROM BOOKS WHERE book_id IN(" +
 
-                            "SELECT book_id from CATEGORY where LOWER(category) LIKE '%s')", catname);
+                            "SELECT book_id from BOOKCATEGORY where LOWER(categoryname) LIKE '%s')", catname);
                     query = query0 + " INTERSECT " + query1 + " INTERSECT " + query2;
                 } else if ((bookName == null || bookName.getText().compareTo("") == 0) && (writer == null || writer.getText().compareTo("") == 0) && (category == null || category.getText().compareTo("") == 0)) {
                     query = String.format("SELECT book_id,name,ShelfNo,RoomNo,price FROM BOOKS ");
@@ -334,7 +335,17 @@ public class SellwithoutreservController {
             rs2.next();
             int total=rs2.getInt(1);
 
-            if(quan<=total-resbooks)
+            int prevtotal=0;
+            for(int i=0;i<sellist.size();i++)
+            {
+                if(sellist.get(i).bookid.equals(bookid))
+                {
+                    prevtotal=prevtotal+sellist.get(i).quantity;
+                }
+            }
+            avail=total-resbooks;
+
+            if((prevtotal+quan)<=(total-resbooks))
                 return 1;
             else return 0;
 
@@ -365,7 +376,7 @@ public class SellwithoutreservController {
         else
         {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Book buy not possible due to unavalilability of the book currently");
+            a.setContentText("Book buy not possible due to unavalilability of the book currently.Now "+avail+" copies of this book is available");
             a.showAndWait();
         }
 
