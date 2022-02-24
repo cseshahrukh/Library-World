@@ -1,0 +1,72 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Library
+ Source Server Type    : Oracle
+ Source Server Version : 190000
+ Source Host           : localhost:1521
+ Source Schema         : LIBRARY
+
+ Target Server Type    : Oracle
+ Target Server Version : 190000
+ File Encoding         : 65001
+
+ Date: 24/02/2022 08:55:34
+*/
+
+
+-- ----------------------------
+-- Table structure for BOOKWRITER
+-- ----------------------------
+DROP TABLE "LIBRARY"."BOOKWRITER";
+CREATE TABLE "LIBRARY"."BOOKWRITER" (
+  "BOOK_ID" VARCHAR2(255 BYTE) VISIBLE NOT NULL,
+  "WRITERNAME" VARCHAR2(255 BYTE) VISIBLE NOT NULL
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of BOOKWRITER
+-- ----------------------------
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('1', 'Shahrukh');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('1', 'Sohidul');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('10', 'Satyajit Roy');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('11', 'Satyajit Roy');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('12', 'Humayun Ahmed');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('13', 'aaaa');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('14', 'Premendro Mitra');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('2', 'Cormen');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('3', 'a writer');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('4 ', 'algorich');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('5', 'Humayun Ahmed');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('6', 'Humayun Ahmed');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('7', 'shahrukh');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('7', 'sohid');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('8', 'Newton');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('8', 'Socrates');
+INSERT INTO "LIBRARY"."BOOKWRITER" VALUES ('9', 'Bibhutibhushan Bandapadhay');
+
+-- ----------------------------
+-- Primary Key structure for table BOOKWRITER
+-- ----------------------------
+ALTER TABLE "LIBRARY"."BOOKWRITER" ADD CONSTRAINT "SYS_C008059" PRIMARY KEY ("BOOK_ID", "WRITERNAME");
+
+-- ----------------------------
+-- Checks structure for table BOOKWRITER
+-- ----------------------------
+ALTER TABLE "LIBRARY"."BOOKWRITER" ADD CONSTRAINT "SYS_C008057" CHECK ("BOOK_ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "LIBRARY"."BOOKWRITER" ADD CONSTRAINT "SYS_C008058" CHECK ("WRITERNAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;

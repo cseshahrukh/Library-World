@@ -359,8 +359,8 @@ public class HistoryController {
 
             if (rs.next()) {
                 System.out.println("before delete");
-                query=String.format("DELETE from requestborrow where username='%s' AND REQUESTID not in " +
-                        "(SELECT BORROWID FROM BORROWBOOK) ", username);
+                query=String.format("DELETE from requestborrow where username='%s' AND isborrowed='N' " +
+                        "  ", username);
 
 
                 oc.updateDB(query);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="422.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FinescollectionController">
+   <children>
+      <Label layoutX="246.0" layoutY="22.0" text="Book Infos for which fines is applicable">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="booktbl" layoutY="66.0" prefHeight="161.0" prefWidth="722.0">
+        <columns>
+          <TableColumn fx:id="bookidclm" prefWidth="75.0" text="BookID" />
+          <TableColumn fx:id="nameclm" prefWidth="140.0" text="Book Name" />
+            <TableColumn fx:id="dateborrowclm" prefWidth="157.0" text="Date of Borrow" />
+            <TableColumn fx:id="datetoreturnclm" prefWidth="138.0" text="Date to return" />
+            <TableColumn fx:id="datereturnclm" prefWidth="132.0" text="Date returned" />
+            <TableColumn fx:id="fineclm" prefWidth="79.0" text="Fine Amount" />
+        </columns>
+      </TableView>
+      <Button layoutX="331.0" layoutY="340.0" mnemonicParsing="false" onAction="#confirmbtnclicked" text="Confirm Payment" />
+      <Label layoutX="186.0" layoutY="293.0" text="Total payable amount">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amountfld" layoutX="346.0" layoutY="290.0" />
+   </children>
+</AnchorPane>

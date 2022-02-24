@@ -35,7 +35,7 @@
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="211.0" text="Adress">
+      <Label layoutX="55.0" layoutY="211.0" text="Address">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>

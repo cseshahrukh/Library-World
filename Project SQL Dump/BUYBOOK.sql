@@ -1,0 +1,57 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Library
+ Source Server Type    : Oracle
+ Source Server Version : 190000
+ Source Host           : localhost:1521
+ Source Schema         : LIBRARY
+
+ Target Server Type    : Oracle
+ Target Server Version : 190000
+ File Encoding         : 65001
+
+ Date: 24/02/2022 08:57:00
+*/
+
+
+-- ----------------------------
+-- Table structure for BUYBOOK
+-- ----------------------------
+DROP TABLE "LIBRARY"."BUYBOOK";
+CREATE TABLE "LIBRARY"."BUYBOOK" (
+  "USERNAME" VARCHAR2(255 BYTE) VISIBLE NOT NULL,
+  "BOOK_ID" VARCHAR2(255 BYTE) VISIBLE NOT NULL,
+  "QUANTITY" NUMBER VISIBLE,
+  "BUYDATE" DATE VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of BUYBOOK
+-- ----------------------------
+INSERT INTO "LIBRARY"."BUYBOOK" VALUES ('legend', '4', '1', TO_DATE('2022-02-23 23:31:31', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "LIBRARY"."BUYBOOK" VALUES ('superman', '5', '1', TO_DATE('2022-02-22 23:56:00', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "LIBRARY"."BUYBOOK" VALUES ('superman', '2', '1', TO_DATE('2022-02-22 23:56:00', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "LIBRARY"."BUYBOOK" VALUES ('superman', '4', '3', TO_DATE('2022-02-22 23:56:00', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "LIBRARY"."BUYBOOK" VALUES ('nowman', '1', '1', TO_DATE('2022-02-23 12:46:00', 'SYYYY-MM-DD HH24:MI:SS'));
+
+-- ----------------------------
+-- Checks structure for table BUYBOOK
+-- ----------------------------
+ALTER TABLE "LIBRARY"."BUYBOOK" ADD CONSTRAINT "SYS_C008214" CHECK ("USERNAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "LIBRARY"."BUYBOOK" ADD CONSTRAINT "SYS_C008215" CHECK ("BOOK_ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;

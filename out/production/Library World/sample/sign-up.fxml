@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.signUpController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #011022;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../sample/wittcode-logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="42.0" layoutY="235.0" text="(555) 555-5555" textFill="#e4dbdb">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="279.0" text="Library World" textFill="#fcfcfc">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="512.0" prefWidth="512.0" style="-fx-background-color: #CCBBAA;">
+         <children>
+            <Label layoutX="30.0" layoutY="29.0" text="Name">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="69.0" text="Password">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="namefld" layoutX="135.0" layoutY="23.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="passwordfld" layoutX="135.0" layoutY="63.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="260.0" layoutY="470.0" text="Already a member?">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="button_login" layoutX="427.0" layoutY="463.0" mnemonicParsing="false" onAction="#showHome" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Login!" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_signup" layoutX="178.0" layoutY="436.0" mnemonicParsing="false" onAction="#signupAction" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #AAFFFF; -fx-cursor: hand;" text="SignUp" textFill="#296dda" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="31.0" layoutY="111.0" text="userName">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernamefld" layoutX="135.0" layoutY="105.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailfld" layoutX="135.0" layoutY="147.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="32.0" layoutY="153.0" text="Email">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="256.0" prefHeight="34.0" prefWidth="349.0" style="-fx-background-color: #010233;" text="  If you are not staff then fill up below also." textAlignment="CENTER" textFill="#e1d3d3">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="306.0" text="Address">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressfld" layoutX="136.0" layoutY="300.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="37.0" layoutY="352.0" text="Phone">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phonefld" layoutX="136.0" layoutY="346.0" prefHeight="32.0" prefWidth="316.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="37.0" layoutY="395.0" text="Date of Birth">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dobfld" layoutX="136.0" layoutY="388.0" prefHeight="34.0" prefWidth="316.0" />
+            <Label layoutX="28.0" layoutY="206.0" text="PeopleID">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="peopleidfld" layoutX="136.0" layoutY="200.0" prefHeight="32.0" prefWidth="316.0" promptText="Keep blank if you are not staff">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

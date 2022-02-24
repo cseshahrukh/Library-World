@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="583.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HistoryController">
+   <children>
+      <SplitPane dividerPositions="0.5375" orientation="VERTICAL" prefHeight="509.0" prefWidth="462.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="borrowtbl" layoutY="30.0" prefHeight="219.0" prefWidth="460.0">
+                     <columns>
+                        <TableColumn fx:id="bookidclm" prefWidth="88.0" text="BookID" />
+                        <TableColumn fx:id="booknameclm" prefWidth="118.0" text="Book Name" />
+                        <TableColumn fx:id="borrowdateclm" prefWidth="107.0" text="BorrowDate" />
+                        <TableColumn fx:id="returndateclm" prefWidth="133.0" text="ReturnDate" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+                  <Label layoutX="145.0" layoutY="4.0" text="BorrowHistory">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="492.0">
+               <children>
+                  <TableView fx:id="buytbl" layoutY="31.0" prefHeight="188.0" prefWidth="460.0">
+                    <columns>
+                      <TableColumn fx:id="bookidclm1" prefWidth="85.0" text="BookID" />
+                      <TableColumn fx:id="booknameclm1" prefWidth="150.0" text="Book Name" />
+                        <TableColumn fx:id="dateclm" prefWidth="114.0" text="Date" />
+                        <TableColumn fx:id="quantityclm" minWidth="0.0" prefWidth="117.0" text="Quantity" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="177.0" layoutY="4.0" text="BuyHistory">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button fx:id="buybtn" layoutX="503.0" layoutY="523.0" mnemonicParsing="false" onAction="#back" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Back" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="buybtn1" layoutX="622.0" layoutY="523.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Log Out" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="buybtn11" layoutX="544.0" layoutY="136.0" mnemonicParsing="false" onAction="#cancel" prefHeight="56.0" prefWidth="108.0" style="-fx-background-color: #000000; -fx-cursor: hand;" text="Cancel this" textFill="#296dda" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="488.0" layoutY="30.0" text="BookID of Current Borrow Request">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="requestfld" editable="false" layoutX="503.0" layoutY="67.0" />
+      <TableView fx:id="buytbl1" layoutX="488.0" layoutY="278.0" prefHeight="231.0" prefWidth="269.0">
+         <columns>
+            <TableColumn fx:id="bookidclm11" prefWidth="84.0" text="BookID" />
+            <TableColumn fx:id="booknameclm11" prefWidth="96.0" text="Book Name" />
+            <TableColumn fx:id="quantityclm1" minWidth="0.0" prefWidth="85.0" text="Quantity" />
+         </columns>
+      </TableView>
+      <Label layoutX="559.0" layoutY="245.0" text="ActiveBuyRequest">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

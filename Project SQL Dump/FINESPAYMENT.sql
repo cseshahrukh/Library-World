@@ -1,0 +1,54 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Library
+ Source Server Type    : Oracle
+ Source Server Version : 190000
+ Source Host           : localhost:1521
+ Source Schema         : LIBRARY
+
+ Target Server Type    : Oracle
+ Target Server Version : 190000
+ File Encoding         : 65001
+
+ Date: 24/02/2022 08:57:23
+*/
+
+
+-- ----------------------------
+-- Table structure for FINESPAYMENT
+-- ----------------------------
+DROP TABLE "LIBRARY"."FINESPAYMENT";
+CREATE TABLE "LIBRARY"."FINESPAYMENT" (
+  "USERID" VARCHAR2(255 BYTE) VISIBLE NOT NULL,
+  "BORROWID" NUMBER VISIBLE NOT NULL,
+  "PAYMENTAMOUNT" NUMBER VISIBLE DEFAULT 20,
+  "PAYMENTDATE" DATE VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+
+-- ----------------------------
+-- Records of FINESPAYMENT
+-- ----------------------------
+INSERT INTO "LIBRARY"."FINESPAYMENT" VALUES ('fineman', '1', '20', TO_DATE('2022-02-23 12:49:23', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "LIBRARY"."FINESPAYMENT" VALUES ('fineman', '5', '20', TO_DATE('2022-02-23 23:39:29', 'SYYYY-MM-DD HH24:MI:SS'));
+
+-- ----------------------------
+-- Checks structure for table FINESPAYMENT
+-- ----------------------------
+ALTER TABLE "LIBRARY"."FINESPAYMENT" ADD CONSTRAINT "SYS_C008184" CHECK ("USERID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "LIBRARY"."FINESPAYMENT" ADD CONSTRAINT "SYS_C008185" CHECK ("BORROWID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;

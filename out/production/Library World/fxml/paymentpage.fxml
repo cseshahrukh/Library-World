@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="399.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentpageController">
+   <children>
+      <Label layoutX="300.0" layoutY="20.0" text="Payment Page">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="59.0" text="User name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="328.0" layoutY="91.0" mnemonicParsing="false" onAction="#searchbtnclicked" text="Search" />
+      <TextField fx:id="userid" layoutX="290.0" layoutY="56.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter the user name" />
+      <Label fx:id="validexpiredlbl" layoutX="87.0" layoutY="150.0" text="Validity of the account has been expired.He can pay now to retrieve his account validity">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="renewpaybtn" layoutX="272.0" layoutY="181.0" mnemonicParsing="false" onAction="#renewalpaybtnclicked" text="Renewal Payment Collection" />
+      <Label fx:id="fines1lbl" layoutX="175.0" layoutY="241.0" text="The user has fines.He cannot borrow any books until he pay the fines">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="validnotexpiredlbl" layoutX="277.0" layoutY="150.0" text="Validity is not expired yet">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="fine2lbl" layoutX="263.0" layoutY="267.0" text="You can view details of the fines">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="finesbtn" layoutX="233.0" layoutY="307.0" mnemonicParsing="false" onAction="#finesbtnclicked" text="Click here to view fines details/fines collection" />
+      <Button layoutX="571.0" layoutY="349.0" mnemonicParsing="false" onAction="#homebtnclicked" style="-fx-background-color: FF0000;" text="Home" textFill="#f5eeee" />
+   </children>
+</AnchorPane>

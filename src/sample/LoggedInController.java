@@ -638,7 +638,7 @@ public class LoggedInController {
 
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setContentText("You can't borrow. Return the previous book you borroed.");
+                            alert.setContentText("You can't borrow. Return the previous book you borrowed.");
                             alert.show();
                         }
                     } else {
